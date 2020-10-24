@@ -1,17 +1,50 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import './sass/App.scss';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#110f48',
+      type: '#383838'
+    },
+    secondary: {
+      main: '#e63956'
+    },
+    background: {
+      card: '#dddde6'
+    }
+  },
+  overrides: {
+    MuiButton: {
+      contained: {
+        borderRadius: 20,
+        textTransform: 'unset',
+        height: 35
+      },
+      text: {
+        borderRadius: 20,
+        textTransform: 'unset',
+        height: 35
+      }
+    },
+    MuiOutlinedInput: {
+      root: {
+        borderRadius: 20
+      },
+      input: {
+        height: 35,
+        padding: '0 15px'
+      }
+    }
+  }
+});
 
 ReactDOM.render(
-  <React.StrictMode>
+  <MuiThemeProvider theme={theme}>
     <App />
-  </React.StrictMode>,
+  </MuiThemeProvider>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

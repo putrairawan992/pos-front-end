@@ -1,0 +1,38 @@
+$space: 1rem;
+$spaces-values : (
+  0,
+  1,
+  2,
+  3,
+  4,
+  5
+) !default;
+
+$space-prefixes : (
+  p  : padding,
+  pt : padding-top,
+  pr : padding-right,
+  pb : padding-bottom,
+  pl : padding-left,
+  m  : margin,
+  mt : margin-top,
+  mr : margin-right,
+  mb : margin-bottom,
+  ml : margin-left,
+) !default;
+
+@mixin make-space($values, $prefixes) {
+  @each $attr-short, $attr-long in $prefixes {
+    @each $value in $values {
+      .#{$attr-short}-#{$value} {
+        #{$attr-long}: #{$space * $value / 2}#{'!important'};
+      }
+    }
+  }
+}
+
+@include make-space($spaces-values, $space-prefixes);
+
+.mt-navbar {
+  margin-top: 6rem
+}
